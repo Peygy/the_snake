@@ -31,7 +31,8 @@ clock = pygame.time.Clock()
 class GameObject:
     def __init__(self, position=(0, 0), color=(255, 255, 255)):
         """
-        Инициализирует базовый объект игры с возможностью передавать параметры по умолчанию.
+        Инициализирует базовый объект игры с
+        возможностью передавать параметры по умолчанию.
 
         :param position: Позиция объекта на игровом поле (x, y)
         :param color: Цвет объекта (R, G, B)
@@ -96,24 +97,15 @@ class Snake(GameObject):
         Обновляет позицию змейки, добавляя новую голову и удаляя хвост.
         """
         self.update_direction()
-
         # Новая позиция головы
         new_head = (self.positions[0][0] + self.direction[0] * GRID_SIZE,
                     self.positions[0][1] + self.direction[1] * GRID_SIZE)
-
-        # Обработка выхода за границы поля (появление с другой стороны)
         new_head = (
             new_head[0] % SCREEN_WIDTH,
             new_head[1] % SCREEN_HEIGHT
         )
-
-        # Сохранение позиции последнего сегмента
         self.last = self.positions[-1]
-
-        # Добавляем новую голову в начало списка
         self.positions.insert(0, new_head)
-
-        # Если змейка не съела яблоко (т.е. длина не увеличилась), удаляем хвост
         if len(self.positions) > self.length:
             self.positions.pop()
 
