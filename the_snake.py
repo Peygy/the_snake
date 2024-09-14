@@ -50,7 +50,9 @@ class Apple(GameObject):
     """Представляет яблоко на игровом поле."""
 
     def __init__(self, position=None):
-        """Инициализирует яблоко и случайным образом устанавливает его позицию."""
+        """
+        Инициализирует яблоко и случайным образом устанавливает его позицию.
+        """
         super().__init__(position, APPLE_COLOR)
         if position is None:
             self.randomize_position()
